@@ -266,7 +266,14 @@ grep beta file*.txt  # Should output that pattern beta was found in file2.txt
 
 ### Introduction
 
+Python is a general purpose programming language ubiquitous in data science and machine learning. Python is known for its flexibility and insistence that there should be preferably only one way "right" to write a given program within the idioms of the language. Python programmers often call the best way to write a program using Python idioms the most *pythonic* way to write the program. Python is also known for enabling programs to be written in a manner that is easy and fun for those who are well versed in the language. An introduction to Python and programming in general is out of the scope of this tutorial but will be covered in detail later in this course.
+
 ### Installation
+
+Python can be installed by following the online instructions [here](
+https://www.python.org/downloads/).
+
+To install Python click `Download` and run the installer.
 
 ### Installing Additional Python Packages
 
@@ -279,8 +286,10 @@ pip install matplotlib
 ```
 
 ### Advantages and Disadvantages of Python
-Important to understand professionally
 
+Python is useful for quickly implementing programs and in many cases implementing production systems. Like any programming language it has advantages and disadvantages. An in depth discussion of programming language design is outside the scope of this tutorial, but at a high level, it is important to understand that Python is an *interpreted* programming language. This means that Python code for programs you write is run line-by-line in another computer program (the Python interpreter) which is downloaded for you when you download Python.
+
+What that means practically is that another program sits between Python code and the actual way the computer executes the instructions provided in a Python program. Python has many incredible features which prevent these extra computations from slowing down program execution but it is not always as fast as a compiled language like C++, which is prepared for execution by a compiler that runs before the program executes. Deep discussion of the differences between interpreted and compiled languages is outside the scope of this tutorial, but it is important to remember that interpreted languages for Python are preferred for offline data analysis (e.g., playing back data from a self-driving car) while compiled languages are preferred for speed and control of execution (e.g., for running real time in the sensor processing system of a self-driving car).
 
 ### Understanding Your $PATH Variable
 
@@ -303,39 +312,81 @@ If this command confirms that your OS is looking for Python in the wrong place, 
 5. Click “New”
 6. Enter the path to the folder you want on your PATH.
 
-### Helpful Videos
+If you are running Unix / Linux / Mac, or using Git Bash, you can find tutorials online for changing your PATH in bash, by editing `.bash_profile` or other similar configuration files. A good explanation of this can be found [here](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path).
 
+**Note**: be careful editing your PATH on the command line in Windows! Changing your PATH can change the way some programs will function. The best way to change your path is using a graphical tool provided by your OS or by editing files such as `.bash_profile`.
 
 ## Contest
 
 ### Introduction
 
+Contest stands for "console test" and is a tool written by Nick Sanchirico, who has taught this course in previous semesters, to facilitate grading of assignments in this course! This course is designed to provide a realistic experience, close to that of writing software on a professional team. To provide such an experience, all assignments are taken in GitLab, and graded on whether or not the tests pass. This is similar to the professional practice of software unit and regression testing (which will be covered later in this course) where an automated test suite runs each time a program is changed to ensure no functionality is broken.
+
+Professionally, it is important to practice *Test Driven Design* or (TDD) when writing software. Practicing TDD means not writing any code until you have first written a test that is failing! Then you may write code to make the test pass. This ensures you write only the code needed to make the test pass and provides a kind of checking mechanism. By thinking through the program twice (once to write the tests and once to write the program that makes them pass), we can use the agreement between our test cases and the actual output of the program as an indicator that we did not make a mistake. This is analogous to solving an algebra problem twice using two different methods to double check the solution.
+
 ### Installation
 
+The instructions to install contest can be found [here](https://github.com/Lnk2past/contest).
+
+As long as you have Python and pip set up, you should be able to install contest by opening Git Bash and typing the following command.
+
+```bash
+pip install contest
+```
 
 ## Optional but Highly Recommended: VSCode
 
 ### Introduction
 
+VSCode is a free integrated development environment (IDE) by Microsoft. An IDE is a collection of tools to develop software. Modern IDEs can be augmented with various packages and extensions. You are encouraged to search for useful extensions to help you as you take on assignments. While you are welcome to use any IDE you like for this class, VSCode is highly recommended. VSCode is so popular currently that getting help from your classmates and the internet will be much easier using it.
+
 ### Installation
 
+VSCode can be installed from [here](https://code.visualstudio.com/download). Click the link for your OS and follow the instructions. You can use all default settings.
 
 ## Optional: Poetry
 
 ### Introduction
 
+When working on complex projects in Python, it can be difficult to keep track of what modules (e.g., `numpy`, `pandas`) and what versions of those modules your program depends on. Poetry is a useful tool for doing this. It is not mandatory in this course, but may be covered as a special topic depending on student interest.
+
 ### Installation
 
+See the official installation instructions for Poetry [here](https://python-poetry.org/docs/#installing-with-the-official-installer).
+
+For Windows users, the PowerShell method is recommended and summarized below.
+
+Open PowerShell and run the following command.
+```PowerShell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
+
+Use the following instructions to add Poetry to your path so Windows knows where to find it.
+
+1. Search for System Properties.
+2. In the System Properties dialog box, click the Advanced tab.
+3. Click Environment Variables.
+4. In the top list, scroll down to the PATH variable, select it, and click Edit. Note: If the PATH variable does not exist, click New and enter PATH for the Variable Name.
+5. In the Variable Value box, scroll to the end of the variable. If there is no semi-colon (;) at the end of the current path, add one, and then enter the path to the MicroStation folder.
+6. Click OK to close each dialog box.
+
+You will need to find out where the installer placed Poetry's files. For Windows, these are usually at `%APPDATA%\pypoetry\venv\Scripts\`. This is the location you want to add to your path.
+
+Confirm poetry works by closing and reopening Git Bash, and then typing the following command.
+
+```bash
+poetry --version
+```
 
 ## First Task: Setting Up Git and Cloning a Repository with SSH
 
 ### Introduction
 
-Important professionally
+It is important to know how to clone a git repository from Git Hub. There are several ways to do this, but in a professional setting this is often done securely via Secure Shell (SSH). This requires some setup which we will complete here and then move on to clone the course syllabus as a first task.
 
 ### How To Set Up Git
 
-Providing your email helps Git track who changed what file.
+Providing your email helps Git track who changed what file. Git will eventually ask you for this information, but you can use the following commands to set it up ahead of time.
 
 ```bash
 git config --global user.name "Your Name"
@@ -344,4 +395,53 @@ git config --global user.email "your@email.com"
 
 ### How to Set Up SSH Keys
 
+To set up your SSH keys, first open Git Bash or the shell you are using for this class and then run the following command to generate a key.
 
+```bash
+ssh-keygen -t ed25519 -C ""
+```
+
+You can leave all fields blank, even the password, for this exercise. This will generate a public and a private key. You want to print (cat) the public key to your screen. In Git Bash or your preferred shell, do the following.
+
+```bash
+cat $HOME/.ssh/id_ed25519.pub
+```
+
+This will print the public key to your screen. Copy that key text.
+
+Go to [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new) and paste the public key. Give it a descriptive name.
+
+### Clone the Syllabus
+
+You are now ready to clone the course syllabus!
+
+Go to a web browser and navigate to the syllabus page: [https://github.com/ruc-data-viz/2024-spring-syllabus](https://github.com/ruc-data-viz/2024-spring-syllabus).
+
+Then click the green `Code` button, click SSH, and copy the text there. Run the following command in Git Bash or your preferred shell to clone the repository.
+
+```bash
+git clone PASTED-TEXT
+```
+
+Replace the PASTED-TEXT with the text you copied from the drop down under `Code` on GitHub. The actual command you run should look something like the following.
+
+```bash
+git clone git@github.com:ruc-data-viz/2024-spring-syllabus.git
+```
+
+Be sure to do this in an area you have permissions to write, such as your home area. You can get to your home area with the following command.
+
+```bash
+cd ~
+```
+
+Finally, you can open the syllabus in VSCode but navigating to the directory using the `cd` command and then opening VSCode using `code .`. The `.` tells VSCode to open in the current directory.
+
+```bash
+cd 2024-spring-syllabus
+code .
+```
+
+Click on the `README.md` file to open it. There is a preview button in the top right corner of VSCode's screen which should allow you to view the file the same way it is viewed on the internet.
+
+Now the our development environment is set up we are ready to begin coding. Note that setting up your development environment can often be a frustrating part of joining any new professional software team. This is because the process can be different on different systems and different teams and individuals may prefer different tools. If the project is structured professionally though, team members should be able to contribute using their preferred environments. It only will get easier from here once we can start to use all the useful tools we just installed!
