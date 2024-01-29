@@ -192,19 +192,75 @@ Assuming you are using bash, zsh, or Git Bash, these commands should all work th
 
 #### Seeing Where You Are
 
+It is important to know what folder you are in when working on the command line. Do this with the `pwd`, i.e., the "print working directory" command.
+
+```bash
+pwd
+```
+
 #### Seeing Who You Are
+
+It is important to know what user you are operating as on the command line. Find this out using the `whoami` command.
+
+```bash
+whoami
+```
 
 #### Moving Between Directories
 
+The basic way to move around your file system in the terminal is using the `cd`, i.e., "change directories" command.
+
+```bash
+cd
+```
+
 #### Making Directories
+
+Use the `mkdir` command to make new directories.
+
+```bash
+mkdir
+```
 
 #### Making Files
 
+You can quickly make new files using the `touch` command. The following command will create a Python script file `script.py` if it does not already exist.
+
+```bash
+touch script.py
+```
+
+If the file already exists, its last modified timestamp will be updated to the moment the touch command was invoked but the file contents will not be changed.
+
 #### Printing File Contents to the Screen
+
+The `cat` command is used to print the contents of a file to the screen. In this command, `cat` is short for `concatenate` since we are concatenating the contents of the file to the buffer which is displayed on the screen.
+
+The following commands create a file, add some text to it, and display this text to the screen.
+
+```bash
+echo "hello world" > file.txt
+cat file.txt # Should print hello world
+```
 
 #### Listing Files in a Directory
 
+Files in a directory can be listed using the `ls` command. This is important and will be used often.
+
+```bash
+ls
+```
+
 #### Finding Patterns in Files
+
+The `grep` command can be used to find files in a directory. It is used like `grep pattern file`. The following example creates three files and then uses grep to search for a pattern between them.
+
+```bash
+echo "alpha" > file1.txt
+echo "beta" > file2.txt
+echo "gamma" > file3.txt
+grep beta file*.txt  # Should output that pattern beta was found in file2.txt
+```
 
 ## Python
 
@@ -257,14 +313,14 @@ If this command confirms that your OS is looking for Python in the wrong place, 
 ### Installation
 
 
-## VSCode
+## Optional but Highly Recommended: VSCode
 
 ### Introduction
 
 ### Installation
 
 
-## Poetry
+## Optional: Poetry
 
 ### Introduction
 
