@@ -13,6 +13,7 @@ The following tools are required for this course. We will introduce all of them 
 * **Git Bash**: Linux-like command prompt for windows (comes with Git on Windows)
 * **Python**: programming language ubiquitous in data science and machine learning (the latest version is 3.12 but any modern version > 3.8 will work for this class)
 * **contest**: tool used in this course for grading assignments
+* **Jupyter**: notebook environment for developing in Python
 
 The following tools are optional. VSCode is technically optional but is highly recommended. VSCode is so popular that you may find it harder to find help online and from your classmates if you choose another integrated development environment (IDE).
 * **VSCode**: free IDE by Microsoft (optional)
@@ -343,6 +344,34 @@ VSCode is a free integrated development environment (IDE) by Microsoft. An IDE i
 ### Installation
 
 VSCode can be installed from [here](https://code.visualstudio.com/download). Click the link for your OS and follow the instructions. You can use all default settings.
+
+
+## Jupyter
+
+### Introduction
+
+Jupyter is a notebook environment for programming in Python. It allows you to see your data and visualizations of your data right next to your code. It is convenient for development, data visualization, and experimentation. We will go over Jupyter in detail and use it many times throughout this class.
+
+### Installation
+
+You can install Jupyter with pip as follows.
+
+```bash
+pip install notebook
+```
+
+Depending on your environment, you may also need to install the following additional packages.
+
+```bash
+pip install ipykernel
+pip install ipython
+```
+
+JupyterLab provides even more functionality than Jupyter. We will not use it directly in this course but you are welcome to try it out for yourself!
+
+```bash
+pip install jupyterlab
+```
 
 ## Optional: Poetry
 
