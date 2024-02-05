@@ -654,6 +654,8 @@ VSCode can be installed from [here](https://code.visualstudio.com/download). Cli
 
 A quick [7 minute introduction](https://www.youtube.com/watch?v=B-s71n0dHUk) to VSCode is recommended if you are completely new to it. A slightly longer [20 minute introduction](https://www.youtube.com/watch?v=ORrELERGIHs) is also helpful.
 
+VSCode has many [keyboard shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf). Learning them will help you work faster in it.
+
 #### Opening VSCode
 
 You should have a shortcut on your desktop to open VSCode. If not, create one by searching for VSCode in your OS, opening its location, copying, and pasting a shortcut to your desktop. You can also open VSCode by searching for it in your OS search bar as you would any other program.
