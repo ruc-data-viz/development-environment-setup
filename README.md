@@ -927,3 +927,53 @@ git status
 ```
 
 Navigate back to your repository in your web browser to see your file there!
+
+
+## Optional: GitHub Classroom CLI
+
+It may be helpful to interact with GitHub classroom through the command line. Note that this is different than interacting with git Git itself through the command line. GitHub classroom's CLI uses the `gh` CLI, which is a tool for interacting with GitHub specifically (not Git) through the command line.
+
+Install GitHub's CLI by following the instructions [here](https://github.com/cli/cli#installation). If installing on Windows, you should have `winget` and be able to use `winget` from within Git Bash.
+
+Once GitHub's CLI is installed, try using it by typing `gh --help` in your shell. Before you use `gh` further you will need to log in to GitHub the same as you would to use GitHub through a web-browser. This is done with the `gh auth login` command. You might notice that this command opens an interactive command line which is buggy on Git Bash. This is a known issue and can be worked around by opening GitBash from within PowerShell as follows (MacOS and Linux or other Unix users can ignore these steps).
+
+Create a powershell script containing the following commands and save it as `open_gitbash.ps1` in a location you will remember (e.g., a `Scripts` directory inside your home directory).
+
+```powershell
+# Define the path to Git Bash executable
+$gitBashPath = "C:\Program Files\Git\bin\bash.exe"
+
+# Check if Git Bash executable exists
+if (Test-Path $gitBashPath) {
+    # If Git Bash executable exists, start a new process to open Git Bash
+    Start-Process -FilePath $gitBashPath
+} else {
+    Write-Host "Git Bash not found at $gitBashPath. Please make sure Git is installed correctly."
+}
+```
+
+Next, create a shortcut on your desktop (right click and click create shortcut). Specify the target of the shortcut as follows.
+
+```
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -command "& 'C:\<PATH TO YOUR SCRIPT>\open_gitbash.ps1'"
+```
+
+Be sure to edit the path to be specific to your system.
+
+Now you should be able to click this shortcut to open GitBash from within PowerShell, which will allow the interactive commands in the GitHub CLI to function properly. Note that as GitHub improves their CLI over time and adds support for `mintty` terminals these steps might become unnecessary. Run `gh help mintty` to learn more.
+
+Now you can launch GitBash from your new shortcut. Log in to GitHub via the following command.
+
+```bash
+gh auth login
+```
+
+Work with the interactive CLI to login using your preferred method. Select the options to login to `GitHub.com` via `SSH` (presuming you have your keys configured), to upload your public key using the default title, and to use the web-browser to authenticate. Enter your two-factor authentication code as required and then enter the code that GitHub CLI provides you.
+
+Now that you are logged in, install the GitHub classroom extension.
+
+```bash
+gh extension install github/gh-classroom
+```
+
+Look at the instructions [here](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli) to learn more commands with GitHub classroom CLI. If you like working on the CLI, these commands might save you time.
