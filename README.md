@@ -683,6 +683,36 @@ Make a new file by clicking inside the explorer and typing `Ctrl` + `N`.
 
 Open an entirely new instance of VSCode with `Ctrl` + `Shift` + `N`.
 
+#### Setting Your Default Python Interpreter
+
+Many tools within VSCode (like tools that provide tips on your code as you edit files) need to know where Python is installed on your system and which of potentially several Python installations you intend to use. If you haven't already noted where your preferred Python version is installed on your system, note it by using the `which` command.
+
+```bash
+ls -l $(which -a python)
+```
+
+Note the path for the Python version you intend to use. Open your User Setting JSON file in VS Code by doing `ctrl` + `shift` `p` and typing `Preferences: Open User Settings (JSON)`. Add the following line.
+
+```json
+"python.defaultInterpreterPath": "/Path/To/Your/Preferred/Python/python"
+```
+
+For example, your settings file might look like this after you set this up:
+
+```json
+{
+    "jupyter.askForKernelRestart": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+    },
+    "python.defaultInterpreterPath": "/c/Users/sanch/AppData/Local/Programs/Python/Python312/python"
+}
+```
+
 #### Making and Running a Python Script
 
 To make a Python script, create a new file with `Ctrl` + `N`. Type the following line and save the file as `hello.py`.
